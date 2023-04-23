@@ -8,11 +8,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.hardware.Camera;
-import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
-import android.hardware.camera2.CaptureRequest;
 import android.net.wifi.SupplicantState;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -39,14 +36,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViews();
+        initVars();
+    }
 
-       initVars();
+    private void findViews() {
+        login_BTN_login = findViewById(R.id.login_BTN_login);
+        login_ET_password = findViewById(R.id.login_ET_password);
     }
 
     private void initVars() {
-        login_BTN_login = findViewById(R.id.login_BTN_login);
-        login_ET_password = findViewById(R.id.login_ET_password);
-
         ActivityCompat.requestPermissions(this, new String[] {
                         Manifest.permission.ACCESS_NETWORK_STATE,
                         Manifest.permission.ACCESS_COARSE_LOCATION,
